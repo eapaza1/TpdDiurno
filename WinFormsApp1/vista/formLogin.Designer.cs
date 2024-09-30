@@ -1,4 +1,4 @@
-﻿namespace WinFormsApp1.vista
+﻿namespace TpdDiurno.vista
 {
     partial class FormLogin
     {

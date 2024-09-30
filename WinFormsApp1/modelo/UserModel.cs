@@ -1,8 +1,8 @@
 ﻿
 using MySql.Data.MySqlClient;
-using WinFormsApp1.entidad;
+using TpdDiurno.entidad;
 
-namespace WinFormsApp1.modelo
+namespace TpdDiurno.modelo
 {
     public class UserModel 
     {

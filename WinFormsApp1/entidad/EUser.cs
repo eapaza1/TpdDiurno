@@ -1,5 +1,5 @@
 ﻿
-namespace WinFormsApp1.entidad
+namespace TpdDiurno.entidad
 {
     public class EUser
     {

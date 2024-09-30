@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WinFormsApp1.vista
+namespace TpdDiurno.vista
 {
     public partial class MenuPrincipal : Form
     {

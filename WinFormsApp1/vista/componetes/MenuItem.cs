@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WinFormsApp1.vista.componetes
+namespace TpdDiurno.vista.componetes
 {
     [DefaultEvent("Click")]
     public partial class MenuItem : UserControl

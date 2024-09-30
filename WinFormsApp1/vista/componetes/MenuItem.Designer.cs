@@ -1,4 +1,4 @@
-﻿namespace WinFormsApp1.vista.componetes
+﻿namespace TpdDiurno.vista.componetes
 {
     partial class MenuItem
     {

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WinFormsApp1.vista.ElementosUI
+namespace TpdDiurno.vista.ElementosUI
 {
     [DefaultEvent("Click")]
     public partial class SidebarItem : UserControl

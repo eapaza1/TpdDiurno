@@ -1,4 +1,4 @@
-﻿namespace WinFormsApp1.vista.ElementosUI
+﻿namespace TpdDiurno.vista.ElementosUI
 {
     partial class CardInfo
     {

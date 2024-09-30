@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WinFormsApp1.controlador;
+using TpdDiurno.controlador;
 
-namespace WinFormsApp1.vista
+namespace TpdDiurno.vista
 {
     public partial class FormLogin : Form
     {

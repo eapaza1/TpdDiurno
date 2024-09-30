@@ -1,4 +1,4 @@
-namespace WinFormsApp1
+namespace TpdDiurno
 {
     internal static class Program
     {

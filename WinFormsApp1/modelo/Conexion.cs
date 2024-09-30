@@ -2,7 +2,7 @@
 
 using MySql.Data.MySqlClient;
 
-namespace WinFormsApp1.modelo
+namespace TpdDiurno.modelo
 {
     public class Conexion
     {

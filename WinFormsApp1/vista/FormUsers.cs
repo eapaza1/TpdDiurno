@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WinFormsApp1.controlador;
-using WinFormsApp1.entidad;
+using TpdDiurno.controlador;
+using TpdDiurno.entidad;
 
-namespace WinFormsApp1.vista
+namespace TpdDiurno.vista
 {
     public partial class FormUsers : Form
     {

@@ -4,10 +4,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WinFormsApp1.entidad;
-using WinFormsApp1.modelo;
+using TpdDiurno.entidad;
+using TpdDiurno.modelo;
 
-namespace WinFormsApp1.controlador
+namespace TpdDiurno.controlador
 {
     public class UserControlador
     {
