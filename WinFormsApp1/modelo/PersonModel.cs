@@ -4,27 +4,32 @@ using TpdDiurno.entidad;
 
 namespace TpdDiurno.modelo
 {
-    public class UserModel 
+    public class PersonModel 
     {
-        private string tabla = "users";
+        private string tabla = "people";
 
         private Conexion conexion;
         
-        public UserModel()
+
+        public PersonModel()
         {
             conexion = new Conexion();
         }
 
 
-        public int create(EUser entidad)
+        public int create(EPerson entidad)
         {
-            string query = $"INSERT INTO {tabla} (username,password,email,person_id) VALUES (@user,@pass,@mail,@personid)";
+            string query = $"INSERT INTO {tabla} (nombres,apellidos,nrodoc,direccion,telefono,estado) " +
+                $"VALUES (@name,@ape,@nro,@dir,@tel,@estado)";
+
             MySqlCommand cmd = new MySqlCommand(query, conexion.getConexion);
 
-            cmd.Parameters.AddWithValue("@user", entidad.Username);
-            cmd.Parameters.AddWithValue("@pass", entidad.Password);
-            cmd.Parameters.AddWithValue("@mail", entidad.Email);
-            cmd.Parameters.AddWithValue("@personid", entidad.PersonId);
+            cmd.Parameters.AddWithValue("@name", entidad.Nombres);
+            cmd.Parameters.AddWithValue("@ape", entidad.Apellidos);
+            cmd.Parameters.AddWithValue("@nro", entidad.Nrodoc);
+            cmd.Parameters.AddWithValue("@dir", entidad.Direccion);
+            cmd.Parameters.AddWithValue("@tel", entidad.Telefono);
+            cmd.Parameters.AddWithValue("@estado", entidad.Estado);
 
             conexion.Open();
 
@@ -33,9 +38,10 @@ namespace TpdDiurno.modelo
             return res;
         }
 
-        public List<EUser> readAll()
+        public List<EPerson> readAll()
         {
-            List<EUser> list = new List<EUser>(); //creamos lista vacia
+            List<EPerson> list = new List<EPerson>(); //creamos lista vacia
+
             string query = $"SELECT * FROM {tabla}";
 
             MySqlCommand cmd = new MySqlCommand(query , conexion.getConexion);            
@@ -44,14 +50,15 @@ namespace TpdDiurno.modelo
                        
             while (reader.Read())
             {
-                EUser user = new EUser();
-                user.Id = reader.GetInt32("id");
-                user.Username= reader.GetString("username");
-                user.Password= reader.GetString("password");
-                user.Email= reader.GetString("email");
-                user.PersonId= reader.GetInt32("person_id");
-
-                list.Add(user);
+                EPerson row = new EPerson();
+                row.Id = reader.GetInt32("id");
+                row.Nombres=reader.GetString("nombres");
+                row.Apellidos=reader.GetString("apellidos");
+                row.Nrodoc=reader.GetString("nrodoc");
+                row.Telefono=reader.GetString("telefono");
+                row.Direccion=reader.GetString("direccion");
+                row.Estado = reader.GetString("estado");
+                list.Add(row);
             }
             reader.Close();
           
@@ -61,15 +68,13 @@ namespace TpdDiurno.modelo
         public int update(EUser entidad) {
             int res=-1;
             string query = $"UPDATE {tabla} SET username=@user, password=@pass, " +
-                $"email=@mail, person_id=@person WHERE id=@id";
+                $"email=@mail WHERE id=@id";
 
             MySqlCommand cmd = new MySqlCommand(query,conexion.getConexion);
 
             cmd.Parameters.AddWithValue("@user",entidad.Username);
             cmd.Parameters.AddWithValue("@pass", entidad.Password);
             cmd.Parameters.AddWithValue("@mail", entidad.Email);
-            cmd.Parameters.AddWithValue("@person", entidad.PersonId);
-            
             //agregadno id
             cmd.Parameters.AddWithValue("@id", entidad.Id);
 
@@ -114,7 +119,6 @@ namespace TpdDiurno.modelo
                 user.Username = reader.GetString("username");
                 user.Password = reader.GetString("password");
                 user.Email = reader.GetString("email");
-                user.PersonId = reader.GetInt32("person_id");
             }
             reader.Close();
             return user;
@@ -136,7 +140,6 @@ namespace TpdDiurno.modelo
                 user.Username = reader.GetString("username");
                 user.Password = reader.GetString("password");
                 user.Email = reader.GetString("email");
-                user.PersonId = reader.GetInt32("person_id");
             }
             reader.Close();
             return user;
