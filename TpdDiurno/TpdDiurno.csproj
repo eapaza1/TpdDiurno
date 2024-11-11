@@ -178,6 +178,12 @@
     <Compile Include="vista\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="vista\FormCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vista\FormCliente.Designer.cs">
+      <DependentUpon>FormCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="vista\FormUsers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="vista\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vista\FormCliente.resx">
+      <DependentUpon>FormCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vista\FormUsers.resx">
       <DependentUpon>FormUsers.cs</DependentUpon>
@@ -285,6 +294,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\arriba-select.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
