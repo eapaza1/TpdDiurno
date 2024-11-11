@@ -130,6 +130,7 @@ namespace TpdDiurno.vista
             this.btn_search.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btn_search.TabIndex = 16;
             this.btn_search.TabStop = false;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // txt_documento
             // 

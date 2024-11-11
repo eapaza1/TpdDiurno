@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpdDiurno.controlador;
 using TpdDiurno.entidad;
+using TpdDiurno.servicios;
 
 namespace TpdDiurno.vista
 {
@@ -196,5 +198,25 @@ namespace TpdDiurno.vista
             btn_calcular.Enabled = false;
         }
 
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            consultar(txt_documento.Text);
+            
+
+
+        }
+
+        private async void consultar(string dni)
+        {
+            ServiceApiDev servicio = new ServiceApiDev();
+
+            var res= await servicio.getByDni(dni);
+
+            if (res != null)
+            {
+                MessageBox.Show(res.Nombre_completo);
+            }
+
+        }
     }
 }
