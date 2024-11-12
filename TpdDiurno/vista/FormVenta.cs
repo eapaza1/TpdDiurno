@@ -196,5 +196,16 @@ namespace TpdDiurno.vista
             }
 
         }
+
+        private void btn_guardar_Click(object sender, EventArgs e)
+        {
+            eventa.Cliente = cCliente.GetByNroDoc("70475261");
+            eventa.Fecha=DateTime.Now;
+            eventa.Id = 100;
+
+            Form1 form_reportes= new Form1();
+            form_reportes.setVenta(eventa);
+            form_reportes.Show();
+        }
     }
 }
