@@ -11,7 +11,7 @@ namespace TpdDiurno.servicios
     public class ServiceApiDev
     {
         private HttpClient http;
-        private const string TOKEN = "599759f090449b051bf2d0b9b34200c71383cbc3994343636653c2ac3419b5cb";
+        private const string TOKEN = "";
         private const string URL_BASE = "https://apiperu.dev/api/";
         public ServiceApiDev()
         {
@@ -78,5 +78,6 @@ namespace TpdDiurno.servicios
             }
 
         }
+
     }
 }

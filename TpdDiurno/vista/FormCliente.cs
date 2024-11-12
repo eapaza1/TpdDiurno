@@ -201,21 +201,41 @@ namespace TpdDiurno.vista
         private void btn_search_Click(object sender, EventArgs e)
         {
             consultar(txt_documento.Text);
-            
-
-
         }
 
-        private async void consultar(string dni)
+        private async void consultar(string nrodoc)
         {
             ServiceApiDev servicio = new ServiceApiDev();
 
-            var res= await servicio.getByDni(dni);
-
-            if (res != null)
+            //progrmacion para dni
+            //-dni tiene 8 digitos
+            int digitos = nrodoc.Length;
+            if (digitos == 8)
             {
-                MessageBox.Show(res.Nombre_completo);
+                DataDniApiDev persona = await servicio.getByDni(nrodoc);
+
+                if (persona != null)
+                {
+                    txt_nombres.Text = persona.Nombres + " " + persona.Apellido_paterno + " " + persona.Apellido_materno;
+
+                }
+
             }
+
+            //programacion para ruc
+            //- ruc -11 digitos
+            if (digitos == 11)
+            {
+                DataRucApiDev empresa= await servicio.getByRuc(nrodoc);
+                if (empresa != null)
+                {
+                    txt_nombres.Text = empresa.Nombre_o_razon_social;
+                    txt_direccion.Text = empresa.Direccion_completa;
+                }
+            }
+
+
+           
 
         }
     }

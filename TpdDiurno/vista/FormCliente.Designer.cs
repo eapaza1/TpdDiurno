@@ -93,7 +93,7 @@ namespace TpdDiurno.vista
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(1011, 49);
             this.label3.TabIndex = 0;
-            this.label3.Text = "ADMINISTRACION DE USUARIOS";
+            this.label3.Text = "ADMINISTRACION DE CLIENTES";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2

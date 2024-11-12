@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpdDiurno.controlador;
 using TpdDiurno.entidad;
+using TpdDiurno.servicios;
 using TpdDiurno.vista.ElementosUI;
 
 namespace TpdDiurno.vista
@@ -18,6 +19,7 @@ namespace TpdDiurno.vista
     {
         private ProductoControlador cProducto;
         private VentaControlador cVenta;
+        private ClienteControlador cCliente;
         private EVenta eventa;
 
         private List<EProducto> lista;
@@ -28,6 +30,7 @@ namespace TpdDiurno.vista
             cProducto = new ProductoControlador();
             cVenta = new VentaControlador();
             eventa = new EVenta();
+            cCliente = new ClienteControlador();
 
             ListarProductos();
 
@@ -137,6 +140,61 @@ namespace TpdDiurno.vista
         public void mostrar_total()
         {
             lbl_total.Text=eventa.Total_pagar.ToString("F2");
+        }
+
+        private void txt_buscar_TextChanged(object sender, EventArgs e)
+        {
+            string nrodoc = txt_buscar.Text;
+
+            ECliente cliente = cCliente.GetByNroDoc(nrodoc);
+            if (cliente != null)
+            {
+                //mostrar cliente
+                lbl_cliente.Text = cliente.Nombres;
+                lbl_direccion.Text = cliente.Direccion;
+                btn_buscar.Enabled = false;
+            }
+            else {
+                lbl_cliente.Text = "No se encontro la informacion";
+                lbl_direccion.Text = "";
+                btn_buscar.Enabled = true;
+            }
+            
+        }
+
+        private void btn_buscar_Click(object sender, EventArgs e)
+        {
+            consultar(txt_buscar.Text);
+
+        }
+
+        private async void consultar(string nrodoc)
+        {
+            ServiceApiDev servicio = new ServiceApiDev();
+            //progrmacion para dni
+            //-dni tiene 8 digitos
+            int digitos = nrodoc.Length;
+            if (digitos == 8)
+            {
+                DataDniApiDev persona = await servicio.getByDni(nrodoc);
+                if (persona != null)
+                {
+                    lbl_cliente.Text = persona.Nombres + " " + persona.Apellido_paterno + " " + persona.Apellido_materno;
+                }
+            }
+
+            //programacion para ruc
+            //- ruc -11 digitos
+            if (digitos == 11)
+            {
+                DataRucApiDev empresa = await servicio.getByRuc(nrodoc);
+                if (empresa != null)
+                {
+                    lbl_cliente.Text = empresa.Nombre_o_razon_social;
+                    lbl_direccion.Text = empresa.Direccion_completa;
+                }
+            }
+
         }
     }
 }
