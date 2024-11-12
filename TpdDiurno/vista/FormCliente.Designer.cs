@@ -93,7 +93,7 @@ namespace TpdDiurno.vista
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(1011, 49);
             this.label3.TabIndex = 0;
-            this.label3.Text = "ADMINISTRACION DE USUARIOS";
+            this.label3.Text = "ADMINISTRACION DE CLIENTES";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
@@ -130,6 +130,7 @@ namespace TpdDiurno.vista
             this.btn_search.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btn_search.TabIndex = 16;
             this.btn_search.TabStop = false;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // txt_documento
             // 

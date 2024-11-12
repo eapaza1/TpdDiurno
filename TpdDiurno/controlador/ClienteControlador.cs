@@ -29,6 +29,11 @@ namespace TpdDiurno.controlador
             return model.getById(id);
         }
 
+        public ECliente GetByNroDoc(string nrodoc)
+        {
+            return model.getByNroDoc(nrodoc);
+        }
+
         public int Update(ECliente cliente)
         {
             return model.Actualizar(cliente);

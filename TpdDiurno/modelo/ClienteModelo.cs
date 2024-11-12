@@ -97,6 +97,30 @@ namespace TpdDiurno.modelo
             return cmd.ExecuteNonQuery();
 
         }
+
+        public ECliente getByNroDoc(string nrodoc)
+        {
+            ECliente cliente = null;
+
+            conexion.Open();
+            string query = "SELECT * FROM " + tabla + " WHERE documento = @doc";
+            MySqlCommand cmd = new MySqlCommand(query, conexion.getConexion);
+            cmd.Parameters.AddWithValue("@doc", nrodoc);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                cliente = new ECliente
+                {
+                    Id = reader.GetInt32("id"),
+                    Nombres = reader.GetString("nombres"),
+                    Documento = reader.GetString("documento"),
+                    Direccion = reader.GetString("direccion")
+                };
+            }
+            reader.Close();
+
+            return cliente;
+        }
     }
 
 }
